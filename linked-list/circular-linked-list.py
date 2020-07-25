@@ -5,12 +5,13 @@ class Node:
         self.next = None
     
 # Linked list Class
-class LinkedList:
+class CLinkedList:
     def __init__(self, arr):
-        self.head = head = Node(arr[0])
+        self.head = ref = Node(arr[0])
         for i in range(1,len(arr)):
-            head.next = Node(arr[i])
-            head = head.next
+            ref.next = Node(arr[i])
+            ref = ref.next
+        ref.next = self.head
 
 # Code execution starts here 
 if __name__=='__main__': 
@@ -19,13 +20,15 @@ if __name__=='__main__':
     print('Data Array', arr)
 
     print('inserting into/ creating a linked list from data array')
-    llist = LinkedList(arr)
+    llist = CLinkedList(arr)
 
     # traversing linked list
     print('traversing linked list')
-    head = llist.head
-    while head:
-        print(head.data)
-        head = head.next
+    ref = head = llist.head
+    print(ref.data)
+    ref = ref.next
+    while ref != head:
+        print(ref.data)
+        ref = ref.next
 
     print('<== END ==>')
